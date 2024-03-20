@@ -1,0 +1,286 @@
+:root {
+  --main-bg-color: rgba(255, 255, 255, 0.25);
+  --main-box-shadow: 0 8px 32px 0 rgba(45, 50, 119, 0.3);
+  --main-color: aliceblue;
+  --accent-color: rgb(71, 130, 182);
+  --gradient-background: linear-gradient(45deg, rgb(120, 3, 136) 15%, rgba(22, 22, 217, 1) 65%, rgba(0, 212, 255, 1) 100%);
+}
+
+body {
+  background-color: #fff;
+  font-family: "lato", sans-serif;
+  font-optical-sizing: auto;
+  color: var(--main-color);
+  font-style: normal;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 20px;
+  min-height: 100vh;
+  perspective: 1000px;
+  background: url("images/bg.jpg") no-repeat center center/cover;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.glass {
+  background: var(--main-bg-color);
+  box-shadow: var(--main-box-shadow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 24px;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 2px 0;
+  overflow: hidden;
+  margin-top: 10%;
+}
+.footer a {
+  color: var(--main-color);
+  text-decoration: none;
+  font-size: 0.7em;
+}
+.footer a:hover,
+.footer a:focus,
+.footer a:has(:focus) {
+  color: white;
+  outline: none;
+}
+
+.header {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  padding: 20px;
+
+  overflow: hidden;
+  color: var(--main-color);
+  margin-top: -10%;
+}
+
+.container:hover,
+.container:focus,
+.container:has(:focus),
+.services-box button:hover,
+.services-box button:focus,
+.services-box button:has(:focus) {
+  transform: rotateY(0deg) rotateX(0deg);
+  outline: none;
+}
+
+.container,
+.services-box button {
+  transition: all 0.3s ease;
+}
+
+.services-box > button > img {
+  width: 50px;
+  height: 50px;
+}
+
+.container {
+  border-radius: 24px;
+
+  padding: 20px 30px;
+  transform: rotateY(20deg) rotateX(12deg);
+
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+
+  background: var(--gradient-background);
+  z-index: -1;
+  border-radius: 24px;
+  transform: translate(-50%, 0);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  width: 50%;
+  height: 50%;
+  top: -25%;
+  left: 50%;
+  overflow: hidden;
+}
+
+.formbox form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 40px;
+}
+
+input {
+  padding: 12px 10px;
+  background: rgba(253, 253, 253, 0.5);
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--main-box-shadow);
+  font-size: 0.9em;
+  font-weight: bold;
+  color: white;
+  transform-origin: center bottom;
+}
+input:focus,
+input:valid {
+  outline: none;
+  border: none;
+  background-color: rgb(195, 191, 191);
+}
+.input-group {
+  position: relative;
+  width: 100%;
+}
+.input-group label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  transition: all 0.3s ease;
+  color: rgb(161, 160, 160);
+}
+input:focus + label,
+input:valid + label {
+  transform: translateY(-27px);
+  font-size: 0.9em;
+  color: white;
+  font-weight: bolder;
+}
+
+#login-btn {
+  background: rgb(22, 22, 217);
+  background: var(--gradient-background);
+  background-size: 400%;
+  background-position: 90% 0;
+  color: rgb(201, 201, 201);
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: 1.2em;
+  font-weight: bold;
+  box-shadow: var(--main-box-shadow);
+  transition: background 0.5s ease;
+}
+
+#login-btn:focus,
+#login-btn:hover {
+  outline: none;
+  border: none;
+  color: white;
+  background-position: 10% 30%;
+}
+
+.services-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  perspective: 1000px;
+}
+.services-box button,
+.or-box {
+  font-size: 1.2em;
+  color: rgba(71, 130, 182, 0.9);
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  transform: rotateY(30deg) rotateX(12deg);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.service-details {
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width 0.3s ease, opacity 0.3s ease;
+  white-space: nowrap;
+}
+.services-box button:hover > .service-details,
+.services-box button:focus > .service-details,
+.services-box button:has(:focus) > .service-details {
+  margin-left: 10px;
+  max-width: 500px;
+  opacity: 1;
+}
+
+.pane1 {
+  position: absolute;
+  width: 400px;
+  height: 350px;
+  background: var(--main-bg-color);
+  box-shadow: var(--main-box-shadow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transform: rotateY(20deg) rotateX(12deg);
+  border-radius: 15px;
+  top: 0;
+  right: 600px;
+  z-index: -1;
+  animation: move3 100s infinite linear;
+}
+.pane2 {
+  position: absolute;
+  width: 200px;
+  height: 500px;
+  background: rgba(165, 162, 245, 0.15);
+  box-shadow: var(--main-box-shadow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transform: rotateY(20deg) rotateX(12deg);
+  border-radius: 1px;
+  top: 0;
+  left: 800px;
+  z-index: -1;
+  animation: move2 100s infinite linear;
+}
+.pane3 {
+  position: absolute;
+  width: 100px;
+  height: 250px;
+  background: rgba(165, 162, 245, 0.15);
+  box-shadow: var(--main-box-shadow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transform: rotateY(20deg) rotateX(12deg);
+  border-radius: 25px;
+  right: 800px;
+  z-index: -2;
+  animation: move 100s infinite linear;
+}
+@keyframes move {
+  50% {
+    transform: translateX(50px) translateY(200px) rotate(5deg);
+  }
+}
+
+@keyframes move2 {
+  50% {
+    transform: translateX(-300px) translateY(-100px) rotate(20deg);
+  }
+}
+@keyframes move3 {
+  50% {
+    transform: translateX(300px) translateY(130px);
+  }
+}
